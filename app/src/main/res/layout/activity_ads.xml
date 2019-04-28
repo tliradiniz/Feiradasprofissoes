@@ -5,7 +5,7 @@
                                              xmlns:tools2="http://schemas.android.com/tools"
                                              android:layout_width="match_parent"
                                              android:layout_height="match_parent"
-                                             android:background="#98b5bf" tools2:layout_editor_absoluteY="25dp">
+                                             android:background="#71acc0" tools2:layout_editor_absoluteY="25dp">
 
     <TextView
             style="@style/border"
