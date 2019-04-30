@@ -33,13 +33,13 @@ class LoginActivity: AppCompatActivity() {
                 .addOnCompleteListener {
                     if (!it.isSuccessful) return@addOnCompleteListener
 
-                    Log.d("Login", "Successfully logged in: ${it.result.user.uid}")
+                    //Log.d("Login", "Successfully logged in: ${it.result.user.uid}")
 
                     val intent = Intent(this, CursoActivity::class.java)
                     startActivity(intent)
                 }
                 .addOnFailureListener {
-                    Toast.makeText(this, "Failed to log in: ${it.message}", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Erro ao acessar a conta! Verifique seus dados.", Toast.LENGTH_SHORT).show()
                 }
         }
 

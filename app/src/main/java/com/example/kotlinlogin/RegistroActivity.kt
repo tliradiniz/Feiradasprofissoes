@@ -30,7 +30,10 @@ class RegistroActivity : AppCompatActivity() {
             saveStatus()
             startActivity(intent)
         }
-
+            main_voltar.setOnClickListener {
+                val intent = Intent(this, LoginActivity::class.java)
+                startActivity(intent)
+            }
         contaCriada_textview.setOnClickListener {
 
             finish()
@@ -46,14 +49,16 @@ class RegistroActivity : AppCompatActivity() {
 
             FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, senha)
                 .addOnCompleteListener {
-                    if (!it.isSuccessful) return@addOnCompleteListener
+                    if (!it.isSuccessful)
+                        Toast.makeText(applicationContext, "Salvo", Toast.LENGTH_SHORT).show()
+                        return@addOnCompleteListener
                 }
                 .addOnFailureListener {
                     return@addOnFailureListener
                 }
                 .addOnFailureListener {
-                    Log.d("Main", "Sem sucesso ao criar conta: ${it.message}")
-                    Toast.makeText(this, "Sem sucesso ao criar conta: ${it.message}", Toast.LENGTH_SHORT).show()
+                    //Log.d("Main", "Sem sucesso ao criar conta: ${it.message}")
+                    Toast.makeText(this, "Sem sucesso ao criar conta!", Toast.LENGTH_SHORT).show()
                 }
 
 
@@ -70,7 +75,7 @@ class RegistroActivity : AppCompatActivity() {
         val status = Status(statusCadastro!!, usuario, escola, tipoEscola, cidade)
 
         ref.child(statusCadastro).setValue(status).addOnCompleteListener {
-            Toast.makeText(applicationContext, "Salvo", Toast.LENGTH_SHORT).show()
+
         }
     }
 

@@ -3,12 +3,21 @@ package com.example.kotlinlogin
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.widget.Toast
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_curso.*
 
 class CursoActivity: AppCompatActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_curso)
+
+        curso_sair.setOnClickListener {
+            FirebaseAuth.getInstance().signOut()
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+
+        }
 
         button_cc.setOnClickListener {
             val intent = Intent(this, CursoCcActivity::class.java)
